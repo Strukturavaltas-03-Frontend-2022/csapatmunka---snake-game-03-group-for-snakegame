@@ -19,13 +19,15 @@ import BaseGame from './BaseGame';
 export default class Game extends BaseGame {
 
   constructor (private levels: Level[]) {
-    super();
+    super(
+    );
     this.head = new Piece({ x: 80, y: 80, type: 'head' });
     this.tail = this.resetHead();
     this.garden = document.getElementById('garden') as HTMLDivElement;
     this.renderGarden();
     this.handleFood();
     this.setEvents();
+    
   }
 
   get highScore (): number {
