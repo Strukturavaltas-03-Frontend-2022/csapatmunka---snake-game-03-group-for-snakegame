@@ -17,6 +17,24 @@ import BaseGame from "./BaseGame";
  * metódusként vannak definiálva.
  */
 export default class Game extends BaseGame {
+  getRandomLevel(): Level {
+    let index = Math.floor(Math.random() * this.levels.length);
+    return this.levels[index];
+  }
+
+  mayIHaveGoldenApple(): boolean {
+    const chance: number = 5;
+    const pick: number = Math.random() * 100;
+
+    return pick < chance ? true : false;
+  }
+
+  removeGrid(): void {
+    const grids = document.querySelectorAll(".vertical-grid, .horizontal-grid");
+    grids.forEach((item) => Utils.removeNode(item));
+    this.gridVisible = false;
+  }
+
   constructor(private levels: Level[]) {
     super();
     this.head = new Piece({ x: 80, y: 80, type: "head" });

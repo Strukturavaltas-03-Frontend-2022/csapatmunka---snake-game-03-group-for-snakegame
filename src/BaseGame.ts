@@ -47,10 +47,7 @@ export default abstract class BaseGame implements IBaseGame {
    * majd kerekítsd lefelé, ez lesz az index.
    * Majd térj vissza a this.levels tömbnek ezzel az indexével.
    */
-  abstract getRandomLevel(): Level {
-    let index = Math.floor(Math.random() * this.levels.length);
-    return this.levels[index];
-  }
+  abstract getRandomLevel(): Level;
 
   /**
    * @returns {boolean}
@@ -58,12 +55,7 @@ export default abstract class BaseGame implements IBaseGame {
    * 2. hozz létre egy pick nevű változót, értéke random szám szorozva 100-zal
    * 3. térj vissza true értékkel, ha a pick kisebb, mint a chance
    */
-  abstract mayIHaveGoldenApple(): boolean {
-    const chance: number = 5;
-    const pick: number = Math.random() * 100;
-
-    return pick < chance ? true : false;
-  }
+  abstract mayIHaveGoldenApple(): boolean;
 
   /**
    * @returns {void}
