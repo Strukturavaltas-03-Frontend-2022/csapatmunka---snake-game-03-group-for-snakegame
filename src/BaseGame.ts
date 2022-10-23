@@ -67,9 +67,5 @@ export default abstract class BaseGame implements IBaseGame {
    * metódust, hogy eltávolítsd őket az oldalról
    * 4. a this.gridVisible értékét állítsd false-ra
    */
-  abstract removeGrid(): void {
-    const grids = document.querySelectorAll(".vertical-grid, .horizontal-grid");
-    grids.forEach((item) => Utils.removeNode(item));
-    this.gridVisible = false;
-  }
+  abstract removeGrid(): void;
 }
