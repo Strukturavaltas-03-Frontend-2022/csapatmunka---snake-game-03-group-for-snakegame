@@ -28,10 +28,7 @@ interface IPiece {
    * 1. A this.type tulajdonságot beállítja a kapott type értékre.
    * 2. Meghívja a this.applyClass metódust a változtatások érvényesítéséhez.
    */
-  setType(type: string): void {
-     return this.type = type,
-            this.applyClass()
-  }
+  setType(type: string): void;
 
   /**
    * Osztályokat állít be a this.el HTML-elemre.
@@ -39,12 +36,7 @@ interface IPiece {
    * 2. A this.el.classList.add metódussal hozzáad három új osztályt:
    * 'cell', this.type, this.direction
    */
-  applyClass(): void {
-    return this.el.className = '',
-           this.el.classList.add = 'cell',
-           this.el.classList.add = this.type,
-           this.el.classList.add = this.direction
-  };
+  applyClass(): void;
 
   /**
    * Megállapítja, hogy ütközött-e a kígyó darabja valamivel.
@@ -54,9 +46,7 @@ interface IPiece {
    * Ha nem, akkor abban az esetben tér vissza true-val, ha a this.x egyenlő a node.x-szel 
    * és a this.y egyenlő a node.y-nal.
    */
-  isCollidingWith(node: Piece | null): boolean; {
-    return node = falsy ? false :
-  }
+  isCollidingWith(node: Piece | null): boolean;
 }
 
 /**
@@ -73,8 +63,19 @@ export default class Piece implements IPiece {
   direction: string;
   type: string;
   garden: HTMLDivElement;
-  applyClass: () =>{};
-  setType: (type:string) =>{};
+
+   applyClass(): void {
+  this.el.className = "";
+  this.el.classList.add("cell", this.type, this.direction );
+ };
+
+  setType(type: string): void{
+    this.type = type;
+    this.applyClass();
+  };
+
+   isCollidingWith(node: Piece | null): boolean{
+  return node && this.x===node.x && this.y===node.y ? true : false; }
 
   constructor({
     x,
