@@ -28,7 +28,7 @@ export default class Level {
    */
 
   translate(x: number, y: number): coord {
-    return [(x = Math.floor(x)) * SIZE, Math.floor(y) * SIZE];
+    return [Math.floor(x) * SIZE, Math.floor(y) * SIZE];
   }
 
   remove(): void {
@@ -101,7 +101,7 @@ export default class Level {
        * a line második eleméből!
        */
 
-    level.forEach((line) => {
+
       const [x1, y1]: coord = line[1];
     
     
@@ -115,4 +115,4 @@ export default class Level {
 
     });
 
-    })}}
+  }}
