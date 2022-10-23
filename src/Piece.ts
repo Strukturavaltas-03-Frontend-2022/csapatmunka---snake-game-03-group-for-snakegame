@@ -28,7 +28,7 @@ interface IPiece {
    * 2. Meghívja a this.applyClass metódust a változtatások érvényesítéséhez.
    */
   setType(type: string): void;
-
+ 
   /**
    * Osztályokat állít be a this.el HTML-elemre.
    * 1. A this.el.className-et üres string-re állítja.
@@ -45,14 +45,25 @@ interface IPiece {
    * Ha nem, akkor abban az esetben tér vissza true-val, ha a this.x egyenlő a node.x-szel 
    * és a this.y egyenlő a node.y-nal.
    */
-  isCollidingWith(node: Piece | null): boolean;
+  isCollidingWith(node: Piece | null): boolean; 
+
 }
+    
+  
 
 /**
  * FELADAT!
  * Pótold a hiányzó tulajdonságokat és metódusokat az interfész alapján.
  */
 export default class Piece implements IPiece {
+  next: Piece;
+  prev: Piece;
+  x: number;
+  y: number;
+  el: HTMLDivElement;
+  direction: string;
+  type: string;
+  garden: HTMLDivElement;
   
   
   
@@ -78,6 +89,27 @@ export default class Piece implements IPiece {
     this.garden = (document.getElementById('garden') as HTMLDivElement);
     // this.applyClass();
     this.garden.appendChild(this.el);
+  }
+  setType(type: string): void {
+    this.type = type;
+    this.applyClass();
+  }
+  applyClass(): void {
+    this.el.className = '';
+    this.el.classList.add(
+      'cell', 
+      this.type,
+      this.direction
+      );
+  }
+
+  isCollidingWith(node: Piece | null): boolean {
+    if ((this.x === node.x) && (this.y === node.y)) {
+      return true
+    }
+    else {
+      return false
+    }
   }
 
   bend(headDirection: string) {
