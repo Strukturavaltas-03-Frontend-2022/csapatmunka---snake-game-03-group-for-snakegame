@@ -17,19 +17,19 @@ import BaseGame from "./BaseGame";
  * metódusként vannak definiálva.
  */
 export default class Game extends BaseGame {
-  getRandomLevel(): Level {
+  getRandomLevel() {
     let index = Math.floor(Math.random() * this.levels.length);
     return this.levels[index];
   }
 
-  mayIHaveGoldenApple(): boolean {
+  mayIHaveGoldenApple() {
     const chance: number = 5;
     const pick: number = Math.random() * 100;
 
     return pick < chance ? true : false;
   }
 
-  removeGrid(): void {
+  removeGrid() {
     const grids = document.querySelectorAll(".vertical-grid, .horizontal-grid");
     grids.forEach((item) => Utils.removeNode(item));
     this.gridVisible = false;
