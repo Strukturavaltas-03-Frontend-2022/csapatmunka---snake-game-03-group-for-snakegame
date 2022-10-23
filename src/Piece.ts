@@ -74,9 +74,8 @@ export default class Piece implements IPiece {
     this.el.classList.add("cell", this.type, this.direction);
   }
 
-  isCollidingWith(node: Piece | null): boolean {
-    return node && this.x === node.x && this.y === node.y ? true : false;
-  }
+     isCollidingWith(node: Piece | null): boolean{
+  return node && this.x===node.x && this.y===node.y ? true : false; }
 
   constructor({
     x,
