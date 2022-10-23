@@ -267,6 +267,7 @@ export default class Game extends BaseGame {
 
     this.score += won;
 
+    this.score = this.score === 20 ? (this.score = 0) : this.score;
     return this.score;
   }
 
